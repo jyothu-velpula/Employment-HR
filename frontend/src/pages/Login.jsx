@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
 import Swal from "sweetalert2";
-import "./../styles/auth.css"
+import "./../styles/auth.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const API_URL = import.meta.env.REACT_BACKEND_URL || "https://improved-telegram-g99qjrgjq4wcpp96-56067.app.github.dev"
 
 function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [showPassword, setShowPassword] = useState(false);
 
     const loginUser = async () => {
         try {
@@ -55,8 +57,23 @@ function Login() {
                 {/* <p> Welcome Back</p> */}
 
                 <input type="email" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                <input type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                {/* <input type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}></input> */}
+                <div className="password-wrapper">
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Enter Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
+                    <span
+                        className="password-icon"
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </span>
+                </div>
                 <button onClick={loginUser}>Login</button>
                 <p style={{marginTop : "10px"}}>Don't have an account ? <Link to="/register">Register</Link></p>
             </div>
