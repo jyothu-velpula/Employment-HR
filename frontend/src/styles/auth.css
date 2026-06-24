@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+}
+
+.auth-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.auth-card h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.auth-card p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.auth-card input,
+.auth-card select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.auth-card input:focus,
+.auth-card select:focus {
+  border-color: #667eea;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #667eea;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.auth-card button:hover {
+  background: #4f5bd5;
+}
+
+.auth-card a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-card a:hover {
+  text-decoration: underline;
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+  .auth-card {
+    padding: 30px;
+  }
+
+  .auth-card h1 {
+    font-size: 24px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .auth-container {
+    padding: 15px;
+  }
+
+  .auth-card {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .auth-card h1 {
+    font-size: 22px;
+  }
+
+  .auth-card p {
+    font-size: 14px;
+  }
+
+  .auth-card input,
+  .auth-card button,
+  .auth-card select {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 12px 45px 12px 12px !important;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.password-icon {
+  position: absolute;
+  top: 40%;
+  right: 15px;
+  margin-bottom: 10px !important;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+  font-size: 18px;
+}
+
+.password-icon:hover {
+  color: #667eea;
+}
