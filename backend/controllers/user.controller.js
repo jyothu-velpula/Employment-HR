@@ -7,6 +7,7 @@ const Op = Sequelize.Op
 exports.RegisterUser = async (req, res, next) => {
     try {
         const { name, role, userType, gender, email, password } = req.body
+        let loginId;
         const checkExist = await User.findOne({
             where: { email }
         })
@@ -20,8 +21,18 @@ exports.RegisterUser = async (req, res, next) => {
 
         const hsahPawword = await bcrypt.hash(password, 10)
 
+        const count = await User.findOne({
+            order : [['id','DESC']]
+        })
+        if(count){
+            let lastCount = count.id + 1
+            loginId = `OWN000`+lastCount
+        } else {
+            loginId = "OWN0001"
+        }
+
         const create = await User.create({
-            name, role, email, password: hsahPawword, encryptPassword: hsahPawword, userType, gender
+            name, role, email, password: hsahPawword, encryptPassword: hsahPawword, userType, gender, loginId
         })
 
         return res.status(201).json({
@@ -61,7 +72,7 @@ exports.LoginUser = async (req, res, next) => {
         if (!matchPawword) {
             return res.status(201).json({
                 error: true,
-                message: "Invalid Password.Email or Password is Wrong..!"
+                message: "Invalid Password / Email or Password is Wrong..!"
             })
         } else {
             return res.status(201).json({

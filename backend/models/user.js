@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
-const sequelize = require('../config/database')
+const db = require('../config/database')
 
-const Users = sequelize.define("users",
+const Users = db.define("users",
     {
         id : {
             type : DataTypes.INTEGER,
@@ -15,6 +15,7 @@ const Users = sequelize.define("users",
         encryptPassword : DataTypes.STRING,
         userType : DataTypes.STRING,
         role : DataTypes.STRING,
+        loginId : DataTypes.STRING,
         isActive : {
             type : DataTypes.INTEGER,
             defaultValue : 1

@@ -5,12 +5,15 @@ const cors = require('cors')
 
 const db = require('./config/database')
 const userData = require('./routes/user.route')
+const employeeData = require("./routes/employee.route")
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 
 app.use('/api', userData)
+app.use('/api',employeeData)
+
 app.get("/", (req, res) => {
   res.send("Backend Working");
 });

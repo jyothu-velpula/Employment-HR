@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios"
-import { Link } from "react-router-dom"
+import { Link, useNavigate  } from "react-router-dom"
 import Swal from "sweetalert2";
 import "./../styles/auth.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -8,6 +8,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const API_URL = import.meta.env.REACT_BACKEND_URL || "https://improved-telegram-g99qjrgjq4wcpp96-56067.app.github.dev"
 
 function Login() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false);
@@ -32,14 +33,9 @@ function Login() {
                 });
 
             } else {
-                Swal.fire({
-                    text: response.data.message,
-                    icon: 'success'
-                }).then(() => {
-                    setEmail("")
-                    setPassword("")
-                });
-
+                navigate('/dashboard')
+                setEmail("")
+                setPassword("")
                 localStorage.setItem(
                     "user",
                     JSON.stringify(response.data.details)
