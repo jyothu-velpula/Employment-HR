@@ -1,5 +1,5 @@
 import { Link, useNavigate} from "react-router-dom"
-import { FaHome, FaUsers, FaUserPlus, FaUserCircle, FaSignOutAlt } from "react-icons/fa"
+import { FaHome, FaUsers, FaUserPlus, FaUserCircle, FaSignOutAlt, FaDatabase } from "react-icons/fa"
 import Swal from "sweetalert2"
 import "../styles/sidebar.css"
 
@@ -44,6 +44,13 @@ function Sidebar({collapsed}){
                     <FaUserCircle/> {!collapsed && <span>Profile</span>}
                     </Link>
                 </li>
+
+                <li>
+                    <Link to = "/dashboard/masterData">
+                    <FaDatabase/> {!collapsed && <span>Master Data</span>}
+                    </Link>
+                </li>
+
                 <li onClick={logout}>
                     <FaSignOutAlt/> {!collapsed && <span>LogOut</span>}
                 </li>

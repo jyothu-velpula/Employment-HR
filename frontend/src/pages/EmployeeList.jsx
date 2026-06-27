@@ -53,6 +53,7 @@ function EmployeeList(){
             }
         })
     }
+
     const filteredEmployees = (employee || []).filter((emp)=> {
         return(
             emp.employeeName.toUpperCase().includes(search.toUpperCase()) || 
@@ -71,7 +72,7 @@ function EmployeeList(){
 
             {
                 loading ?
-                <h3>Loading Employees....</h3> : 
+                <h3>Loading Employees.....</h3> : 
                 <table>
                     <thead>
                         <tr>

@@ -93,3 +93,41 @@ font-size:20px;
 min-width:20px;
 
 }
+
+.sidebar{
+    width:260px;
+    height:100vh;              /* Full screen height */
+    position:sticky;           /* or fixed */
+    top:0;
+    left:0;
+    background:#312db1;
+    color:#fff;
+    padding:20px;
+    overflow-y:auto;           /* Vertical scroll */
+    overflow-x:hidden;
+    transition:.35s;
+    scrollbar-width:thin;      /* Firefox */
+    scrollbar-color:#312db1 transparent;
+}
+
+.sidebar.collapsed{
+    width:80px;
+}
+
+.sidebar::-webkit-scrollbar{
+    width:7px;
+}
+
+.sidebar::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background:#312db1;
+    border-radius:10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover{
+    background:#312db1;
+}
+

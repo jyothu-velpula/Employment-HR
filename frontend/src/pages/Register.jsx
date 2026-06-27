@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom"
 import "./../styles/auth.css"
@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { getCodeIdData } from "../services/masterData.service"
 
 const API_URL = import.meta.env.REACT_BACKEND_URL || "https://improved-telegram-g99qjrgjq4wcpp96-56067.app.github.dev"
 
@@ -26,12 +27,49 @@ function Register() {
         userType: ""
     })
     const [showPassword, setShowPassword] = useState(false);
+    const [allGender, setAllGender] = useState([])
+    const [allUserType, setAllUserType] = useState([])
+    const [allRole, setAllRole] = useState([])
+    const [loading, setLoading] = useState([])
 
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         })
+    }
+
+    useEffect(()=>{
+        getAllGender();
+        getAlluserType();
+        getAllRole();
+    },[])
+
+    const getAllGender = async()=> {
+        try{
+            const response = await getCodeIdData({codeId : "GEN"})
+            setAllGender(response.data.result)
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+    const getAlluserType = async()=> {
+        try{
+            const response = await getCodeIdData({codeId : "USE"})
+            setAllUserType(response.data.result)
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+    const getAllRole = async()=> {
+        try{
+            const response = await getCodeIdData({codeId : "DES"})
+            setAllRole(response.data.result)
+        } catch(err){
+            console.log(err)
+        }
     }
 
     const registerUser = async () => {
@@ -112,23 +150,36 @@ function Register() {
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </span>
                     </div>
-                    <select name="gender" value={formData.gender} onChange={handleChange}>
+                    <select name="gender" value="{employee.gender}" onChange={handleChange}>
                         <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
+                        {
+                            allGender.map((item)=> (
+                                <option key={item.id} value={item.systemCode}>{item.systemCodeDsesc}</option>
+                            ))
+                        }
                     </select>
                     <select name="userType" value={formData.userType} onChange={handleChange}>
                         <option value="">Select User Type</option>
-                        <option value="ADMIN">ADMIN</option>
-                        <option value="Employee">Employee</option>
+                        {
+                            allUserType.map((item)=> (
+                                <option key={item.id} value={item.systemCode}>{item.systemCodeDsesc}</option>
+                            ))
+                        }
                     </select>
-                    <select name="role" value={formData.role} onChange={handleChange}>
+                    <select name="userType" value={formData.userType} onChange={handleChange}>
+                        <option value="">Select User Type</option>
+                        {
+                            allRole.map((item)=> (
+                                <option key={item.id} value={item.systemCode}>{item.systemCodeDsesc}</option>
+                            ))
+                        }
+                    </select>
+                    {/* <select name="role" value={formData.role} onChange={handleChange}>
                         <option value="">Select Role</option>
                         <option value="Employee">Employee</option>
                         <option value="HR">HR</option>
                         <option value="Admin">Admin</option>
-                    </select>
+                    </select> */}
 
                     <button onClick={registerUser}>Register</button>
 

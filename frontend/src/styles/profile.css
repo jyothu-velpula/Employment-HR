@@ -208,7 +208,7 @@ grid-template-columns:1fr;
 
 .details-table{
     display:grid;
-    grid-template-columns:220px 1fr;
+    grid-template-columns:150px 40px 1fr;
     row-gap:20px;
     column-gap:40px;
 }

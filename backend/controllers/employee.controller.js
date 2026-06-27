@@ -49,27 +49,43 @@ exports.createEmployee = async(req, res, next)=> {
     }
 }
 
-exports.getAllEmployee = async(req, res, next)=> {
-    try{
+exports.getAllEmployee = async (req, res, next) => {
+    try {
+
+        let department;
+        let designation;
+
+        if (req.body) {
+            department = req.body.department
+            designation = req.body.designation
+        }
+
+        department = department ? { department } : undefined
+        designation = designation ? { designation } : undefined
         const allEmp = await Employees.findAll({
-            where : {
-                isActive : 1
+            where: {
+                [Op.and]: [
+                    { isActive: 1 },
+                    department,
+                    designation
+                ]
             }
         })
 
-        if(allEmp.length == 0){
+        if (allEmp.length == 0) {
             return res.status(200).json({
-                errror : true,
-                message : "No Data Found."
+                errror: true,
+                message: "No Data Found."
             })
         }
 
         return res.status(201).json({
-            error : false,
-            message : "List Fetched Successfully.",
-            result : allEmp
+            error: false,
+            message: "List Fetched Successfully.",
+            result: allEmp,
+            count: allEmp.length
         })
-    } catch(error){
+    } catch (error) {
         console.log(error)
         next(error)
     }

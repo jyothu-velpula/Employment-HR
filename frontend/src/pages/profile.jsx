@@ -34,27 +34,32 @@ function Profile(){
                 <div className="profile-right">
                     <h3>User Details</h3>
                     <div className="details-table">
-                        <div className="label">Name : </div>
+                        <div className="label">Name  </div>
+                        <div className="label"> :  </div>
                         <div className="value">{user.name}</div>
                     </div>
 
                     <div className="details-table">
-                        <div className="label">Email : </div>
+                        <div className="label">Email  </div>
+                        <div className="label"> :  </div>
                         <div className="value">{user.email}</div>
                     </div>
 
                     <div className="details-table">
-                        <div className="label">Gender : </div>
+                        <div className="label">Gender  </div>
+                        <div className="label"> :  </div>
                         <div className="value">{user.gender || "NA"}</div>
                     </div>
 
                     <div className="details-table">
-                        <div className="label">Role : </div>
+                        <div className="label">Role  </div>
+                        <div className="label"> :  </div>
                         <div className="value">{user.role}</div>
                     </div>
 
                     <div className="details-table">
-                        <div className="label">UserType : </div>
+                        <div className="label">UserType  </div>
+                        <div className="label"> :  </div>
                         <div className="value">{user.userType}</div>
                     </div>
                     
