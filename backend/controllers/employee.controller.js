@@ -1,5 +1,6 @@
-const { Model, Op } = require("sequelize")
-const Employees = require("../models/employee")
+const { Model, Op, Sequelize } = require("sequelize")
+const db = require("../config/database");
+const {Employees, masterData, Users} = require('../models')
 
 exports.createEmployee = async(req, res, next)=> {
     try{
@@ -37,6 +38,14 @@ exports.createEmployee = async(req, res, next)=> {
             userId, department, designation, status, employeeId, gender
         })
 
+        const update = await Users.update({
+            employeeId : employeeId
+        }, {
+            where : {
+                email 
+            }
+        })
+
         return res.status(201).json({
             error : false,
             message : "Employee Created Successfully.",
@@ -68,6 +77,19 @@ exports.getAllEmployee = async (req, res, next) => {
                     { isActive: 1 },
                     department,
                     designation
+                ]
+            },
+            include : [
+                {
+                    model : masterData,
+                    as : "getGender",
+                    required : false,
+                    attributes : []
+                }
+            ],
+            attributes : {
+                include : [
+                    [Sequelize.col("getGender.systemCodeDsesc"), "gender"]
                 ]
             }
         })

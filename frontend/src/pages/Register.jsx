@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from "react";
 import axios from "axios"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "./../styles/auth.css"
 import Swal from "sweetalert2";
 import { toast, ToastContainer } from "react-toastify";
@@ -87,6 +87,8 @@ function Register() {
                 `${API_URL}/api/Register/User`,
                 formData
             )
+
+            const navigate = useNavigate()
             if (response.data.error == true) {
                 Swal.fire({
                     text: response.data.message,
@@ -101,6 +103,7 @@ function Register() {
                         userType: ""
                     });
                 });
+                navigate('/')
             } else {
                 Swal.fire({
                     text: response.data.message,
@@ -166,8 +169,8 @@ function Register() {
                             ))
                         }
                     </select>
-                    <select name="userType" value={formData.userType} onChange={handleChange}>
-                        <option value="">Select User Type</option>
+                    <select name="role" value={formData.role} onChange={handleChange}>
+                        <option value="">Select Role</option>
                         {
                             allRole.map((item)=> (
                                 <option key={item.id} value={item.systemCode}>{item.systemCodeDsesc}</option>

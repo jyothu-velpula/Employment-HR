@@ -25,7 +25,6 @@ function MasterData() {
     })
 
     useEffect(() => {
-        console.log("useEffect called");
         loadingMasterData()
     }, [])
 
@@ -288,10 +287,6 @@ function MasterData() {
                                                     </div>
 
                                                 </div>
-                                                {/* <div className="modal-buttons" >
-                                                <button className="cancel-btn" onClick={() => setShowUpdateForm(false)}>Cancel</button>
-                                                <button className="save-btn" onClick={updateMaster}>Save</button>
-                                            </div> */}
                                             </div>
                                         )
                                     }

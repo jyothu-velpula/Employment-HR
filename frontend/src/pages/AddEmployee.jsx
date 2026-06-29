@@ -41,6 +41,8 @@ function AddEmployee() {
     const saveEmployee = async () => {
         try {
 
+
+            let emailRegex;
             if(!employee.employeeName || !employee.email || !employee.gender
                 || !employee.mobileNo || !employee.department || !employee.employeeCode
                 || !employee.salary || !employee.status
@@ -49,18 +51,18 @@ function AddEmployee() {
                 return;
             }
 
-            if (!emailRegex.test(employee.email)) {
-                toast.error("Please enter a valid Email Address.");
-                return;
-            }
+            // if (!emailRegex.test(employee.email)) {
+            //     toast.error("Please enter a valid Email Address.");
+            //     return;
+            // }
 
-            // Mobile validation
-            const mobileRegex = /^[6-9]\d{9}$/;
+            // // Mobile validation
+            // const mobileRegex = /^[6-9]\d{9}$/;
 
-            if (!mobileRegex.test(employee.mobileNo)) {
-                toast.error("Please enter a valid 10-digit Mobile Number.");
-                return;
-            }
+            // if (!mobileRegex.test(employee.mobileNo)) {
+            //     toast.error("Please enter a valid 10-digit Mobile Number.");
+            //     return;
+            // }
 
             const payload = {
                 ...employee,
@@ -186,7 +188,7 @@ function AddEmployee() {
                     </div>
                     <div className="form-group">
                         <label>Designation : <span style={{ color: "red" }}>*</span></label>
-                        <select name="department" value={employee.designation} onChange={handlePage}>
+                        <select name="designation" value={employee.designation} onChange={handlePage}>
                             <option value="">Select Designation</option>
                             {
                                 allDesig.map((item) => (

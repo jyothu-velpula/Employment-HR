@@ -1,0 +1,382 @@
+/* ===========================
+   Leave Management
+=========================== */
+
+.leave-container{
+    padding:20px;
+}
+
+/* Top Header */
+
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.top-bar h2{
+    color:#312e81;
+    font-size:28px;
+}
+
+/* Buttons */
+
+.add-btn,
+.save-btn,
+.delete-btn{
+    border:none;
+    border-radius:8px;
+    padding:12px 22px;
+    cursor:pointer;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.add-btn{
+    background:#4f46e5;
+}
+
+.add-btn:hover{
+    background:#3730a3;
+}
+
+.save-btn{
+    background:#4f46e5;
+}
+
+.save-btn:hover{
+    background:#4f46e5;
+}
+
+.delete-btn{
+    background:#dc2626;
+}
+
+.delete-btn:hover{
+    background:#b91c1c;
+}
+
+/* ===========================
+      Form
+=========================== */
+
+.leave-form{
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+
+    margin-bottom:30px;
+
+}
+
+.leave-form{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group.full{
+
+    grid-column:span 2;
+
+}
+
+.form-group label{
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#555;
+
+}
+
+.form-group input,
+
+.form-group select,
+
+.form-group textarea{
+
+    padding:12px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.form-group input:focus,
+
+.form-group select:focus,
+
+.form-group textarea:focus{
+
+    border-color:#4f46e5;
+
+    box-shadow:0 0 4px rgba(79,70,229,.3);
+
+}
+
+textarea{
+
+    resize:none;
+
+}
+
+.save-div{
+
+    grid-column:span 2;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+/* ===========================
+        Table
+=========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:#fff;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+
+}
+
+table thead{
+
+    background:#4f46e5;
+
+    color:#fff;
+
+}
+
+table th,
+
+table td{
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+table tbody tr{
+
+    border-bottom:1px solid #eee;
+
+}
+
+table tbody tr:nth-child(even){
+
+    background:#f8fafc;
+
+}
+
+table tbody tr:hover{
+
+    background:#eef2ff;
+
+}
+
+/* ===========================
+      Status Badge
+=========================== */
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status.pending{
+
+    background:#fef3c7;
+
+    color:#92400e;
+
+}
+
+.status.approved{
+
+    background:#dcfce7;
+
+    color:#166534;
+
+}
+
+.status.rejected{
+
+    background:#fee2e2;
+
+    color:#b91c1c;
+
+}
+
+/* ===========================
+      Search
+=========================== */
+
+.search-box{
+
+    width:350px;
+
+    max-width:100%;
+
+    margin-bottom:20px;
+
+    padding:12px 15px;
+
+    border-radius:8px;
+
+    border:1px solid #d1d5db;
+
+    outline:none;
+
+}
+
+.search-box:focus{
+
+    border-color:#4f46e5;
+
+}
+
+/* ===========================
+      No Data
+=========================== */
+
+.no-data{
+
+    text-align:center;
+
+    color:#777;
+
+    padding:20px;
+
+}
+
+/* ===========================
+      Responsive
+=========================== */
+
+@media(max-width:992px){
+
+.leave-form{
+
+grid-template-columns:1fr;
+
+}
+
+.form-group.full{
+
+grid-column:span 1;
+
+}
+
+.save-div{
+
+grid-column:span 1;
+
+justify-content:center;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.top-bar{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+table{
+
+display:block;
+
+overflow-x:auto;
+
+white-space:nowrap;
+
+}
+
+.add-btn,
+
+.save-btn,
+
+.delete-btn{
+
+width:100%;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.leave-container{
+
+padding:10px;
+
+}
+
+.leave-form{
+
+padding:15px;
+
+}
+
+.top-bar h2{
+
+font-size:22px;
+
+}
+
+}

@@ -1,5 +1,6 @@
-const { DataTypes } = require ('sequelize')
+const { DataTypes, Model } = require ('sequelize')
 const db = require('../config/database')
+const model = require('./index')
 
 const Employees = db.define(
     "employees",
@@ -30,5 +31,25 @@ const Employees = db.define(
         }   
     }
 )
+
+Employees.associate = function(models){
+    Employees.belongsTo(models.masterData,{
+    foreignKey : "gender",
+    targetKey : "systemCode",
+    as : "getGender"
+})
+
+Employees.hasMany(models.Leave,{
+    foreignKey:"employeeId",
+    sourceKey:"employeeId",
+    as:"leaveDetails"
+});
+
+Employees.belongsTo(models.masterData,{
+    foreignKey:"department",
+    targetKey:"systemCode",
+    as:"getDepart"
+});
+}
 
 module.exports = Employees

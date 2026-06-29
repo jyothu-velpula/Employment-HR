@@ -1,5 +1,5 @@
 import { Link, useNavigate} from "react-router-dom"
-import { FaHome, FaUsers, FaUserPlus, FaUserCircle, FaSignOutAlt, FaDatabase } from "react-icons/fa"
+import { FaHome, FaUsers, FaUserPlus, FaUserCircle, FaSignOutAlt, FaDatabase, FaCalendarAlt, FaCalendarCheck } from "react-icons/fa"
 import Swal from "sweetalert2"
 import "../styles/sidebar.css"
 
@@ -29,6 +29,13 @@ function Sidebar({collapsed}){
                     <FaHome/>{!collapsed && <span>Dashboard</span>}
                     </Link>
                 </li>
+
+                <li>
+                    <Link to = "/dashboard/profile">
+                    <FaUserCircle/> {!collapsed && <span>Profile</span>}
+                    </Link>
+                </li>
+
                 <li>
                     <Link to = "/dashboard/Employees">
                     <FaUsers/>{!collapsed && <span>Employees</span>}
@@ -39,15 +46,22 @@ function Sidebar({collapsed}){
                     <FaUserPlus/> {!collapsed && <span>Add Employee</span>}
                     </Link>
                 </li>
-                <li>
-                    <Link to = "/dashboard/profile">
-                    <FaUserCircle/> {!collapsed && <span>Profile</span>}
-                    </Link>
-                </li>
 
                 <li>
                     <Link to = "/dashboard/masterData">
                     <FaDatabase/> {!collapsed && <span>Master Data</span>}
+                    </Link>
+                </li>
+
+                <li>
+                    <Link to="/dashboard/leave">
+                        <FaCalendarAlt /><span>Leave Management</span>
+                    </Link>
+                </li>
+
+                <li>
+                    <Link to="/dashboard/leaveApproval">
+                        <FaCalendarCheck /><span>Leave Approval</span>
                     </Link>
                 </li>
 

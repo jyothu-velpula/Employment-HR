@@ -4,6 +4,8 @@ import DashboardHome from "../pages/DashboardHome"
 import MasterData from "../pages/masterData"
 import "../styles/dashboard.css"
 import { useState } from "react"
+import LeaveManagement from "../pages/LeaveManagement"
+import LeaveApproval from "./leaveApproval"
 
 import { Routes, Route } from "react-router-dom"
 import EmployeeList from "./EmployeeList"
@@ -34,6 +36,12 @@ function Dashboard(){
                     <Route 
                     path = "masterData"
                     element = {<MasterData/>}/>
+                    <Route 
+                    path = "leave"
+                    element = {<LeaveManagement/>}/>
+                    <Route
+                    path = "leaveApproval"
+                    element = {<LeaveApproval/>}/>
                 </Routes>
             </div>
         </div>

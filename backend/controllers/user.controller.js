@@ -2,6 +2,7 @@ const Sequelize = require('sequelize')
 const db = require('../config/database')
 const User = require('../models/user')
 const bcrypt = require("bcryptjs")
+const { Employees } = require('../models')
 const Op = Sequelize.Op
 
 exports.RegisterUser = async (req, res, next) => {
@@ -55,6 +56,20 @@ exports.LoginUser = async (req, res, next) => {
                 [Op.and]: [
                     { email },
                     { isActive: 1 }
+                ]
+            },
+            include : [
+                {
+                    model : Employees,
+                    as : "getEmpdetails",
+                    attributes : [],
+                    required : false 
+                }
+            ],
+            attributes : {
+                include : [
+                    [Sequelize.col("getEmpdetails.employeeId"), "employeeId"],
+                    [Sequelize.col("getEmpdetails.employeeName"), "employeeName"]
                 ]
             }
         })
